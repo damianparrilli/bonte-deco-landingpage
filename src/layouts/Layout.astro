@@ -1,9 +1,9 @@
 ---
-import Header from '../components/Header.astro';
+import Header from "../components/Header.astro";
 interface Props {
-	title: string;
-	description: string;
-	keywords?: string;
+  title: string;
+  description: string;
+  keywords?: string;
 }
 
 const { title, description, keywords } = Astro.props;
@@ -11,45 +11,48 @@ const { title, description, keywords } = Astro.props;
 
 <!doctype html>
 <html lang="es">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="title" content={title} />
-		<meta name="description" content={description} />
-		<meta name="kewords" content={keywords} />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<title>{title}</title>
-	</head>
-	<body>
-		<Header />
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="kewords" content={keywords} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Italiana&family=Mukta:wght@200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+  </head>
+  <body class="bg-[#f9f9f9]">
+    <Header />
+    <slot />
+  </body>
 </html>
 <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
+  :root {
+  }
+
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    /* scrollbar-gutter: stable; */
+	font-family: "Mukta", sans-serif;
+	text-wrap: pretty;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+	font-family: "Italiana", sans-serif !important;
+  }
+
+
+
+  code {
+  }
 </style>
