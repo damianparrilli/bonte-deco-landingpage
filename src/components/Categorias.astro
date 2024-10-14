@@ -1,0 +1,57 @@
+---
+import Almohadones from './components_categoria/Almohadones.astro';
+import Alfombras from './components_categoria/Alfombras.astro';
+import Caminos from './components_categoria/Caminos.astro';
+import Cortinas from './components_categoria/Cortinas.astro';
+import Flores from './components_categoria/Flores.astro';
+import Fundas from './components_categoria/Fundas.astro';
+import Manteles from './components_categoria/Manteles.astro';
+import PieDeCama from './components_categoria/PieDeCama.astro';
+import Pillow from './components_categoria/Pillow.astro';
+import Servilletas from './components_categoria/Servilletas.astro';
+import Repasadores from './components_categoria/Repasadores.astro';
+import Toallas from './components_categoria/Toallas.astro';
+---
+
+<section>
+  <div class="container">
+    <h2 class="text-4xl">Categorías</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
+
+      <Almohadones />
+
+      <Manteles />
+
+      <Repasadores />
+
+      <Servilletas />
+
+      <Toallas />
+
+      <Caminos />
+
+      <Alfombras />
+
+      <Cortinas />
+
+      <Flores />
+
+      <PieDeCama />
+
+      <Fundas />
+
+      <Pillow />
+      
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .background-shadowed {
+    background-color: #f5f3ef;
+    box-shadow: -15px -12px 99px 0px rgba(0, 0, 0, 0.1) inset;
+    -webkit-box-shadow: -15px -12px 99px 0px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow: -15px -12px 99px 0px rgba(0, 0, 0, 0.1) inset;
+  }
+</style>
