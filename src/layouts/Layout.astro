@@ -1,5 +1,6 @@
 ---
 import Header from "../components/Header.astro";
+import Banner from "../components/Banner.astro";
 interface Props {
   title: string;
   description: string;
@@ -7,6 +8,7 @@ interface Props {
 }
 
 const { title, description, keywords } = Astro.props;
+const isHomePage = new URL(Astro.request.url).pathname === "/";
 ---
 
 <!doctype html>
@@ -27,6 +29,7 @@ const { title, description, keywords } = Astro.props;
     <title>{title}</title>
   </head>
   <body class="bg-[#f9f9f9]">
+    {isHomePage && <Banner />}
     <Header />
     <slot />
   </body>
@@ -50,7 +53,7 @@ const { title, description, keywords } = Astro.props;
 
   section {
     width: 100%;
-    padding: 25px;
+    padding: 25px 5%;
   }
 
   .container {
@@ -77,7 +80,8 @@ const { title, description, keywords } = Astro.props;
   }
 
   h3 {
-    -webkit-text-stroke: 0.5px #3c2c0b;
+    color: #373535;
+    -webkit-text-stroke: 0.5px #373535;
   }
 
   h3 {
