@@ -32,6 +32,7 @@ const isHomePage = new URL(Astro.request.url).pathname === "/";
     {isHomePage && <Banner />}
     <Header />
     <slot />
+    <script src="/node_modules/preline/dist/preline.js" is:client></script>
   </body>
 </html>
 <style is:global>
@@ -43,6 +44,7 @@ const isHomePage = new URL(Astro.request.url).pathname === "/";
     margin: 0;
     box-sizing: border-box;
     color: #3c2c0b;
+    scroll-behavior: smooth;
   }
 
   html {
@@ -53,7 +55,7 @@ const isHomePage = new URL(Astro.request.url).pathname === "/";
 
   section {
     width: 100%;
-    padding: 25px 5%;
+    padding: 125px 5%;
   }
 
   .container {
@@ -62,7 +64,7 @@ const isHomePage = new URL(Astro.request.url).pathname === "/";
   }
 
   .container.otros {
-    max-width: 1500px;
+    max-width: 1250px;
   }
 
   h1,
