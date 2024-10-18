@@ -11,9 +11,11 @@ import Pillow from './components_categoria/Pillow.astro';
 import Servilletas from './components_categoria/Servilletas.astro';
 import Repasadores from './components_categoria/Repasadores.astro';
 import Toallas from './components_categoria/Toallas.astro';
+
+const { id } = Astro.props;
 ---
 
-<section>
+<section id={id}>
   <div class="container">
     <h2 class="text-4xl invisible">Categorías</h2>
 

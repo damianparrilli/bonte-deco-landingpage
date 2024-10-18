@@ -1,5 +1,9 @@
-<section>
-  <form id="contacto" class="container otros flex flex-col gap-5">
+---
+const { id } = Astro.props;
+---
+
+<section id={id}>
+  <form id="contactoForm" class="container otros flex flex-col gap-5">
     <h2 class="text-4xl">Contacto</h2>
     <div class="flex md:flex-row flex-col gap-4 w-full">
       <div class="w-full flex flex-col md:gap-x-4">
@@ -55,9 +59,9 @@
 </style>
 
 <script>
-  const contacto = document.getElementById("contacto");
+  const contactoForm = document.getElementById("contactoForm");
 
-  contacto.addEventListener("submit", (e) => {
+  contactoForm.addEventListener("submit", (e) => {
     e.preventDefault();
   });
 </script>

@@ -1,40 +1,178 @@
-<header id="header" class="flex h-[70px] gap-12 px-[5%] w-full sticky top-0 bg-[#f9f9f9] z-50 overflow-hidden transition-opacity duration-500 opacity-0">
-    <img src="../public/logo.svg" alt="Logo del sitio web Bonte Deco" class="w-24 h-auto object-contain colored">
-    <nav class="flex items-center list-none gap-10">
-        <li><a href="">Productos destacados</a></li>
-        <li><a href="">Quiénes Somos</a></li>
-        <li><a href="">Categorías</a></li>
-        <li><a href="">Preguntas frecuentes</a></li>
-        <li><a href="">Contacto</a></li>
+<header
+  id="header"
+  class="flex h-[60px] md:h-[70px] gap-12 px-[5%] justify-center items-center lg:justify-start w-full sticky top-0 bg-[#f9f9f9] z-[100] overflow-hidden transition-opacity duration-500 opacity-0"
+>
+<a href="#" class="p-2 w-full max-w-24 h-auto colored z-[100]">
+  <img
+    id="header-logo"
+    src="/logo.svg"
+    alt="Logo del sitio web Bonte Deco"
+    class="w-full h-full object-contain"
+  />
+</a>
+  <nav class="hidden lg:flex items-center list-none gap-12 desktop-nav">
+    <li><a href="#productos">Productos destacados</a></li>
+    <li><a href="#categorias">Categorías</a></li>
+    <li><a href="#quienessomos">Quiénes Somos</a></li>
+    <li><a href="#faq">Preguntas frecuentes</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </nav>
+  <!-- Navigation Toggle -->
+  <button
+    type="button"
+    id="toggleHamburger"
+    class="z-[100] absolute right-[3%] lg:hidden my-2 py-2 px-3 flex justify-center items-center"
+    aria-haspopup="dialog"
+    aria-expanded="false"
+    aria-controls="hs-offcanvas-example"
+    aria-label="Toggle navigation"
+    data-hs-overlay="#hs-offcanvas-example"
+  >
+    <svg
+      id="abrir"
+      class="size-8 transition"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="icon icon-tabler icons-tabler-outline icon-tabler-menu-2"
+      ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+        d="M4 6l16 0"></path><path d="M4 12l16 0"></path><path d="M4 18l16 0"
+      ></path></svg
+    >
+    <svg
+    id="cerrar"
+      class="size-9 hidden transition"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="icon icon-tabler icons-tabler-outline icon-tabler-x"
+      ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+        d="M18 6l-12 12"></path><path d="M6 6l12 12"></path></svg
+    >
+  </button>
+  <!-- End Navigation Toggle -->
+
+  <!-- Sidebar -->
+  <div
+    id="hs-offcanvas-example"
+    class="hs-overlay z-50 lg:hidden [--auto-close:lg] hs-overlay-open:translate-x-0 translate-x-full transition-all duration-300 transform hidden fixed top-0 end-0 bottom-0 w-full max-w-80 bg-[#f9f9f9] pt-7 pb-10 overflow-y-auto lg:translate-x-0 lg:end-auto lg:bottom-0 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full mt-[60px]"
+    role="dialog"
+    tabindex="-1"
+    aria-label="Sidebar"
+  >
+    <nav
+      class="hs-accordion-group p-6 w-full flex flex-col flex-wrap"
+    >
+      <ul class="flex flex-col gap-8">
+        <li>
+          <a class="flex items-center gap-x-3.5 py-2 px-2.5" href="#productos">
+            Productos destacados
+          </a>
+        </li>
+        <li>
+          <a class="flex items-center gap-x-3.5 py-2 px-2.5" href="#categorias">
+            Categorías
+          </a>
+        </li>
+        <li>
+          <a class="flex items-center gap-x-3.5 py-2 px-2.5" href="#quienessomos">
+            Quiénes Somos
+          </a>
+        </li>
+        <li>
+          <a class="flex items-center gap-x-3.5 py-2 px-2.5" href="#faq">
+            Preguntas frecuentes
+          </a>
+        </li>
+        <li>
+          <a class="flex items-center gap-x-3.5 py-2 px-2.5" href="#contacto">
+            Contacto
+          </a>
+        </li>
+      </ul>
     </nav>
+  </div>
+  <!-- End Sidebar -->
+
 </header>
 
 <style>
-.colored{
-    filter: brightness(0) saturate(100%) invert(48%) sepia(5%) saturate(1335%) hue-rotate(3deg) brightness(90%) contrast(87%);
-}
+  .colored {
+    filter: brightness(0) saturate(100%) invert(48%) sepia(5%) saturate(1335%)
+      hue-rotate(3deg) brightness(90%) contrast(87%);
+  }
+
+  .desktop-nav li a:hover{
+    color: #5f4d27;
+  }
 </style>
 
 <script>
-   
-document.addEventListener('DOMContentLoaded', () => {
-  const header = document.getElementById('header');
-  const banner = document.getElementById('banner');
+  document.addEventListener("DOMContentLoaded", () => {
+    const header = document.getElementById("header");
+    const banner = document.getElementById("banner");
 
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      if (!entry.isIntersecting) {
-        header.classList.add('opacity-100');
-      } else {
-        header.classList.remove('opacity-100');
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          header.classList.add("opacity-100");
+        } else {
+          header.classList.remove("opacity-100");
+        }
+      },
+      {
+        threshold: 0,
       }
-    },
-    {
-      threshold: 0,
-    }
-  );
+    );
 
-  observer.observe(banner);
+    observer.observe(banner);
+  });
+
+
+  const toggleHamburger = document.getElementById("toggleHamburger");
+ 
+  const abrir = document.getElementById("abrir");
+  const cerrar = document.getElementById("cerrar");
+
+  toggleHamburger.addEventListener("click", () =>{
+    abrir.classList.toggle("hidden");
+    cerrar.classList.toggle("hidden");
+  });
+
+  document.addEventListener("click", (event) => {
+  const overlay = document.getElementById("hs-offcanvas-example-backdrop");
+  const sidebar = document.getElementById("hs-offcanvas-example");
+  const anchors = sidebar.querySelectorAll("a");
+
+  if (overlay && event.target === overlay) {
+    abrir.classList.toggle("hidden");
+    cerrar.classList.toggle("hidden");
+  }
+
+  anchors.forEach(anchor => {
+    anchor.addEventListener("click", () => {
+      overlay.click();
+    });
+  });
 });
 
+function checkWidth() {
+  if (window.innerWidth > 1024) {
+    abrir.classList.remove("hidden");
+    cerrar.classList.add("hidden");
+    };
+  }
+
+
+checkWidth();
+
+window.addEventListener('resize', checkWidth);
 </script>
