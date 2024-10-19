@@ -63,7 +63,7 @@
   <!-- Sidebar -->
   <div
     id="hs-offcanvas-example"
-    class="hs-overlay z-50 lg:hidden [--auto-close:lg] hs-overlay-open:translate-x-0 translate-x-full transition-all duration-300 transform hidden fixed top-0 end-0 bottom-0 w-full max-w-80 bg-[#f9f9f9] pt-7 pb-10 overflow-y-auto lg:translate-x-0 lg:end-auto lg:bottom-0 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full mt-[60px]"
+    class="hs-overlay z-50 lg:hidden [--auto-close:lg] hs-overlay-open:translate-x-0 translate-x-full transition-all duration-300 transform hidden fixed top-0 end-0 bottom-0 w-full max-w-80 bg-[#f9f9f9] pt-7 pb-10 overflow-y-auto lg:translate-x-0 lg:end-auto lg:bottom-0 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full mt-[60px] md:mt-[70px]"
     role="dialog"
     tabindex="-1"
     aria-label="Sidebar"
@@ -124,8 +124,10 @@
       ([entry]) => {
         if (!entry.isIntersecting) {
           header.classList.add("opacity-100");
+          header.classList.remove("pointer-events-none");
         } else {
           header.classList.remove("opacity-100");
+          header.classList.add("pointer-events-none");
         }
       },
       {

@@ -7,9 +7,9 @@ import Slider4 from "./components_productos/Slide4.astro";
 const { id } = Astro.props;
 ---
 
-<section id={id}>
+<section id={id} class="overflow-hidden">
   <div class="container">
-    <h2 class="text-4xl">Productos destacados</h2>
+    <h2 class="text-3xl sm:text-4xl">Productos destacados</h2>
     <div
       data-hs-carousel='{
     "loadingClasses": "opacity-0",
@@ -84,11 +84,3 @@ const { id } = Astro.props;
     </div>
   </div>
 </section>
-
-<script>
-document.addEventListener('wheel', (event) => {
-  if (event.deltaY !== 0) {
-    event.preventDefault();
-  }
-}, { passive: false });
-</script>

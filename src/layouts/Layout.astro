@@ -32,7 +32,7 @@ const isHomePage = new URL(Astro.request.url).pathname === "/";
     />
     <title>{title}</title>
   </head>
-  <body class="bg-[#f9f9f9]">
+  <body class="bg-[#f9f9f9] overflow-auto">
     {isHomePage && <Banner />}
     <Header />
     <slot />
@@ -52,7 +52,7 @@ const isHomePage = new URL(Astro.request.url).pathname === "/";
   }
 
   html {
-    /* scrollbar-gutter: stable; */
+    scrollbar-gutter: stable;
     font-family: "Plus Jakarta Sans", sans-serif;
     text-wrap: pretty;
   }
