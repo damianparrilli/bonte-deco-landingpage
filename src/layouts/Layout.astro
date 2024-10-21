@@ -36,7 +36,7 @@ const isHomePage = new URL(Astro.request.url).pathname === "/";
     {isHomePage && <Banner />}
     <Header />
     <slot />
-    <script src="/scripts/preline.js" is:client></script>
+    <script src="/scripts/preline.js" is:inline></script>
   </body>
 </html>
 <style is:global>
