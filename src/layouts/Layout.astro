@@ -31,11 +31,13 @@ const isHomePage = new URL(Astro.request.url).pathname === "/";
       rel="stylesheet"
     />
     <title>{title}</title>
+    <script is:inline>document.documentElement.classList.add('js')</script>
   </head>
   <body class="bg-[#f9f9f9] overflow-auto">
     {isHomePage && <Banner />}
     <Header />
     <slot />
+    <script src="https://unpkg.com/taos@1.0.5/dist/taos.js" is:inline></script>
     <script src="/scripts/preline.js" is:inline></script>
   </body>
 </html>
