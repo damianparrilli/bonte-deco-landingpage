@@ -8,7 +8,7 @@ const { id } = Astro.props;
 ---
 
 <section id={id} class="overflow-hidden">
-  <div class="container">
+  <div class="container [animation-iteration-count:infinite] taos:translate-x-[-200px] delay-[200ms] duration-[500ms] taos:opacity-0" data-taos-offset="300">
     <h2 class="text-3xl sm:text-4xl">Productos destacados</h2>
     <div
       data-hs-carousel='{

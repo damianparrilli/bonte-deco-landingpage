@@ -2,8 +2,8 @@
 const { id } = Astro.props;
 ---
 
-<section id={id}>
-  <form id="contactoForm" class="container otros flex flex-col gap-5">
+<section id={id} class="overflow-hidden">
+  <form id="contactoForm" class="container otros flex flex-col gap-5 delay-[200ms] duration-[500ms] taos:translate-y-[-200px] taos:opacity-0 [animation-iteration-count:infinite]" data-taos-offset="300">
     <h2 class="text-3xl sm:text-4xl">Contacto</h2>
     <div class="flex md:flex-row flex-col gap-4 w-full">
       <div class="w-full flex flex-col md:gap-x-4">

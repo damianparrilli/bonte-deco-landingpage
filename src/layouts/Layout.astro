@@ -70,7 +70,7 @@ const isHomePage = new URL(Astro.request.url).pathname === "/";
     <Header />
     <slot />
     <script src="https://unpkg.com/taos@1.0.5/dist/taos.js" is:inline></script>
-    <script src="/scripts/preline.js" is:inline></script>
+    <script src="/scripts/preline.js" defer is:inline></script>
   </body>
 </html>
 <style is:global>

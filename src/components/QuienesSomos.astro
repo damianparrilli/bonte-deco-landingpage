@@ -2,12 +2,12 @@
 const { id } = Astro.props;
 ---
 
-<section id={id} class="bg-[rgb(180,191,197,0.36)]">
+<section id={id} class="bg-[rgb(180,191,197,0.36)] overflow-hidden">
   <div class="container otros flex flex-col md:flex-row justify-center items-center w-full h-full gap-10">
-    <div class="w-full h-full sm:w-3/4 sm:h-3/4 aspect-square md:aspect-auto md:w-96 md:h-96 bg-[rgb(82,82,82,0.36)]">
+    <div class="w-full h-full sm:w-3/4 sm:h-3/4 aspect-square md:aspect-auto md:w-96 md:h-96 bg-[rgb(82,82,82,0.36)] [animation-iteration-count:infinite] taos:translate-x-[200px] delay-[200ms] duration-[500ms] taos:opacity-0" data-taos-offset="100">
       <img class="object-cover w-full h-full" src="" alt="Creadoras de Bonté" loading="lazy" />
     </div>
-    <div class="flex flex-col justify-center w-full h-full flex-1">
+    <div class="flex flex-col justify-center w-full h-full flex-1 [animation-iteration-count:infinite] taos:translate-x-[200px] delay-[200ms] duration-[500ms] taos:opacity-0" data-taos-offset="100">
       <h2 class="text-3xl sm:text-4xl">¿Quiénes somos?</h2>
       <p class="leading-7 text-sm lg:text-base">
         ¡Hola! Somos Gabi y Miri, una dupla inseparable que ha forjado una
