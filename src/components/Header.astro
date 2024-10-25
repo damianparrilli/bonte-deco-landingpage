@@ -2,20 +2,22 @@
   id="header"
   class="flex h-[60px] md:h-[70px] gap-12 px-[5%] justify-center items-center lg:justify-start w-full sticky top-0 bg-[#f9f9f9] z-[100] overflow-hidden transition-opacity duration-500 opacity-0"
 >
-<a href="#" class="p-2 w-full max-w-24 h-auto colored z-[100]">
-  <img
-    id="header-logo"
-    src="/logo.svg"
-    alt="Logo del sitio web Bonte Deco"
-    class="w-full h-full object-contain"
-  />
-</a>
-  <nav class="hidden lg:flex items-center list-none gap-12 desktop-nav">
-    <li><a href="#productos">Productos destacados</a></li>
-    <li><a href="#categorias">Categorías</a></li>
-    <li><a href="#quienessomos">Quiénes Somos</a></li>
-    <li><a href="#faq">Preguntas frecuentes</a></li>
-    <li><a href="#contacto">Contacto</a></li>
+  <a href="#" class="p-2 w-full max-w-24 h-auto colored z-[100]">
+    <img
+      id="header-logo"
+      src="/logo.svg"
+      alt="Logo del sitio web Bonte Deco"
+      class="w-full h-full object-contain"
+    />
+  </a>
+  <nav class="hidden lg:flex items-center">
+    <ul class="flex items-center list-none gap-12 desktop-nav">
+      <li><a href="#productos">Productos destacados</a></li>
+      <li><a href="#catalogo">Catálogo de productos</a></li>
+      <li><a href="#quienessomos">Quiénes Somos</a></li>
+      <li><a href="#faq">Preguntas frecuentes</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
   </nav>
   <!-- Navigation Toggle -->
   <button
@@ -28,35 +30,18 @@
     aria-label="Toggle navigation"
     data-hs-overlay="#hs-offcanvas-example"
   >
-    <svg
+    <img
       id="abrir"
       class="size-8 transition"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      class="icon icon-tabler icons-tabler-outline icon-tabler-menu-2"
-      ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
-        d="M4 6l16 0"></path><path d="M4 12l16 0"></path><path d="M4 18l16 0"
-      ></path></svg
-    >
-    <svg
-    id="cerrar"
+      src="/abrir.svg"
+      alt="Abrir menú"
+    />
+    <img
+      id="cerrar"
       class="size-9 hidden transition"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      class="icon icon-tabler icons-tabler-outline icon-tabler-x"
-      ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
-        d="M18 6l-12 12"></path><path d="M6 6l12 12"></path></svg
-    >
+      src="/cerrar.svg"
+      alt="Cerrar menú"
+    />
   </button>
   <!-- End Navigation Toggle -->
 
@@ -68,9 +53,7 @@
     tabindex="-1"
     aria-label="Sidebar"
   >
-    <nav
-      class="hs-accordion-group p-6 w-full flex flex-col flex-wrap"
-    >
+    <nav class="hs-accordion-group p-6 w-full flex flex-col flex-wrap">
       <ul class="flex flex-col gap-8">
         <li>
           <a class="flex items-center gap-x-3.5 py-2 px-2.5" href="#productos">
@@ -78,12 +61,15 @@
           </a>
         </li>
         <li>
-          <a class="flex items-center gap-x-3.5 py-2 px-2.5" href="#categorias">
-            Categorías
+          <a class="flex items-center gap-x-3.5 py-2 px-2.5" href="#catalogo">
+            Catálogo de productos
           </a>
         </li>
         <li>
-          <a class="flex items-center gap-x-3.5 py-2 px-2.5" href="#quienessomos">
+          <a
+            class="flex items-center gap-x-3.5 py-2 px-2.5"
+            href="#quienessomos"
+          >
             Quiénes Somos
           </a>
         </li>
@@ -101,7 +87,6 @@
     </nav>
   </div>
   <!-- End Sidebar -->
-
 </header>
 
 <style>
@@ -110,7 +95,7 @@
       hue-rotate(3deg) brightness(90%) contrast(87%);
   }
 
-  .desktop-nav li a:hover{
+  .desktop-nav li a:hover {
     color: #5f4d27;
   }
 </style>
@@ -136,45 +121,43 @@
     );
 
     observer.observe(banner);
-  });
 
+    const toggleHamburger = document.getElementById("toggleHamburger");
 
-  const toggleHamburger = document.getElementById("toggleHamburger");
- 
-  const abrir = document.getElementById("abrir");
-  const cerrar = document.getElementById("cerrar");
+    const abrir = document.getElementById("abrir");
+    const cerrar = document.getElementById("cerrar");
 
-  toggleHamburger.addEventListener("click", () =>{
-    abrir.classList.toggle("hidden");
-    cerrar.classList.toggle("hidden");
-  });
-
-  document.addEventListener("click", (event) => {
-  const overlay = document.getElementById("hs-offcanvas-example-backdrop");
-  const sidebar = document.getElementById("hs-offcanvas-example");
-  const anchors = sidebar.querySelectorAll("a");
-
-  if (overlay && event.target === overlay) {
-    abrir.classList.toggle("hidden");
-    cerrar.classList.toggle("hidden");
-  }
-
-  anchors.forEach(anchor => {
-    anchor.addEventListener("click", () => {
-      overlay.click();
+    toggleHamburger.addEventListener("click", () => {
+      abrir.classList.toggle("hidden");
+      cerrar.classList.toggle("hidden");
     });
+
+    document.addEventListener("click", (event) => {
+      const overlay = document.getElementById("hs-offcanvas-example-backdrop");
+      const sidebar = document.getElementById("hs-offcanvas-example");
+      const anchors = sidebar.querySelectorAll("a");
+
+      if (overlay && event.target === overlay) {
+        abrir.classList.toggle("hidden");
+        cerrar.classList.toggle("hidden");
+      }
+
+      anchors.forEach((anchor) => {
+        anchor.addEventListener("click", () => {
+          overlay.click();
+        });
+      });
+    });
+
+    function checkWidth() {
+      if (window.innerWidth > 1024) {
+        abrir.classList.remove("hidden");
+        cerrar.classList.add("hidden");
+      }
+    }
+
+    checkWidth();
+
+    window.addEventListener("resize", checkWidth);
   });
-});
-
-function checkWidth() {
-  if (window.innerWidth > 1024) {
-    abrir.classList.remove("hidden");
-    cerrar.classList.add("hidden");
-    };
-  }
-
-
-checkWidth();
-
-window.addEventListener('resize', checkWidth);
 </script>

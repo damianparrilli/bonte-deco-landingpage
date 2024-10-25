@@ -1,9 +1,13 @@
-<div class="background-shadowed relative aspect-square w-full h-full delay-[300ms] xl:delay-[200ms] sm:delay-[150ms] duration-[500ms] xl:duration-[400ms] sm:taos:translate-x-[200px] xl:taos:translate-x-[0px] xl:taos:translate-y-[200px] taos:opacity-0 max-[1024px]:[animation-iteration-count:infinite]" data-taos-offset="100">
+---
+const { titulo, offset } = Astro.props;
+const defaultTitulo = "text-center";
+---
+
+<a href="#" class="background-shadowed relative aspect-square w-full h-full delay-[150ms] md:delay-[200ms] xl:delay-[125ms] duration-[400ms] taos:translate-x-[200px] md:taos:translate-x-[0px] md:taos:translate-y-[200px] taos:opacity-0" data-taos-offset={offset}>
   <div class="relative h-full w-full bg-clip-content p-[3%] bg-cover bg-[url('/caminos.webp')] flex justify-center items-end">
-    <div class="w-4/5 h-max flex flex-col items-center justify-center bg-[#D9DAD3] mb-[5%] gap-2 p-[3%]">
-      <h3 class="text-3xl xl:text-4xl text-center">Caminos</h3>
-      <p class="text-center text-xs min-[470px]:text-sm sm:text-xs lg:text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sit amet justo a magna interdum aliquet et at eros. </p>
+    <div class="min-w-[70%] h-max flex items-center justify-center bg-[#D9DAD3] mb-[5%] gap-2 p-[3%]">
+      <h3 class={`${titulo} ${defaultTitulo}`}>Caminos</h3>
     </div>
     <div class="absolute w-[6.5%] h-[6.5%] bg-[#373535] right-[3%] top-[3%]"></div>
   </div>
-</div>
+</a>

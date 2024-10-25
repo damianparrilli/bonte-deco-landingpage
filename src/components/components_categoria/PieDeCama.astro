@@ -1,7 +1,11 @@
-<div
-  class="background-shadowed relative aspect-square w-full h-full p-[3%] flex flex-col items-center xl:delay-[100ms] sm:delay-[150ms] duration-[500ms] xl:duration-[400ms] sm:taos:translate-x-[200px] xl:taos:translate-x-[0px] xl:taos:translate-y-[200px] taos:opacity-0 max-[1024px]:[animation-iteration-count:infinite]" data-taos-offset="100"
+---
+const { titulo, offset } = Astro.props;
+---
+
+<a href="#"
+  class="background-shadowed relative aspect-square w-full h-full p-[3%] flex flex-col items-center delay-[150ms] md:delay-[100ms] xl:delay-[125ms] duration-[400ms] taos:translate-x-[200px] md:taos:translate-x-[0px] md:taos:translate-y-[200px] taos:opacity-0" data-taos-offset={offset}
 >
-  <div class="relative flex w-full max-h-[60%] min-h-[50%] shrink">
+  <div class="relative flex w-full max-h-[76%] h-full shrink">
     <img
       class="w-full h-full object-cover"
       src="/pies-de-cama.webp"
@@ -13,14 +17,7 @@
     >
     </div>
   </div>
-  <div class="flex flex-col items-center gap-[5%] py-[6%] flex-1 px-[2%]">
-    <h3 class="text-3xl xl:text-4xl text-center">Pies de cama</h3>
-    <p
-      class="text-center text-xs min-[470px]:text-sm sm:text-xs lg:text-sm px-[1%] flex-1 w-[95%] 2xl:w-[70%] 2xl:mt-[2%]"
-    >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sit
-      amet justo a magna interdum aliquet et at eros. Nunc egestas purus sed
-      auctor volutpat. Ut bibendum tristique tortor, ut commodo odio lacinia id
-    </p>
-  </div>
-</div>
+  <div class="flex flex-col items-center h-full gap-[5%] py-[6%] flex-1 px-[2%]">
+    <h3 class={titulo}>Pies de cama</h3>
+     </div>
+    </a>

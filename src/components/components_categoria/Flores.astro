@@ -1,22 +1,19 @@
-<div class="background-shadowed relative aspect-square w-full h-full pl-[8%] pr-[3%] py-[5%] flex items-end overflow-hidden delay-[300ms] xl:delay-[200ms] sm:delay-[100ms] duration-[500ms] xl:duration-[400ms] sm:taos:translate-x-[-200px] xl:taos:translate-x-[0px] xl:taos:translate-y-[200px] taos:opacity-0 max-[1024px]:[animation-iteration-count:infinite]" data-taos-offset="100">
-    <h3 class="absolute text-3xl xl:text-4xl top-[6%]">Flores</h3>
+---
+const { titulo, offset } = Astro.props;
+const defaultTitulo = "absolute top-[6%]";
+---
+
+<a href="#" class="background-shadowed relative aspect-square w-full h-full pl-[8%] pr-[3%] py-[5%] flex items-end overflow-hidden delay-[100ms] md:delay-[200ms] xl:delay-[100ms] duration-[400ms] taos:translate-x-[-200px] md:taos:translate-x-[0px] md:taos:translate-y-[200px] taos:opacity-0" data-taos-offset={offset}>
+    <h3 class={`${titulo} ${defaultTitulo}`}>Flores</h3>
     <div class="relative flex w-full h-[85%]">
       <img
-          class="h-full shrink min-w-[40%] max-w-[60%] object-cover"
+          class="h-full shrink max-w-[85%] object-cover"
           src="/flores.webp"
           loading="lazy"
           alt="Flores de Bonté"
         />
-      <p
-        class="min-w-[160px] text-xs min-[470px]:text-sm sm:text-xs lg:text-sm 2xl:w-[55%] px-[5%] w-[65%] h-full flex-1"
-      >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-        sit amet justo a magna interdum aliquet et at eros. Nunc egestas
-        purus sed auctor volutpat. Ut bibendum tristique tortor, ut commodo
-        odio lacinia id
-      </p>
       
   </div>
   <div class="absolute w-[1.2%] h-[24.4%] bg-[rgb(55,53,53,0.5)] left-[3.5%] top-[42%]"></div>
       <div class="absolute w-[1.2%] h-[8%] bg-[rgb(55,53,53,0.5)] right-0 top-[2%]"></div>
-</div>
+</a>

@@ -1,18 +1,21 @@
-<div
-        class="background-shadowed relative aspect-square w-full h-full flex flex-col delay-[300ms] xl:delay-[200ms] sm:delay-[100ms] duration-[500ms] xl:duration-[400ms] sm:taos:translate-x-[-200px] xl:taos:translate-x-[0px] xl:taos:translate-y-[200px] taos:opacity-0 max-[1024px]:[animation-iteration-count:infinite]" data-taos-offset="100"
-      >
-        <div class="flex flex-col items-center gap-[5%] py-[6%]">
-          <h3 class="text-3xl xl:text-4xl text-center">Repasadores</h3>
-          <p
-            class="text-center text-xs min-[470px]:text-sm sm:text-xs lg:text-sm px-[1%] flex-1 w-[95%] 2xl:w-[70%] 2xl:mt-[2%]"
-          >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            sit amet justo a magna interdum aliquet et at eros. Nunc egestas
-            purus sed auctor volutpat. Ut bibendum tristique tortor, ut commodo
-            odio lacinia id
-          </p>
-        </div>
-        <img class="w-[92%] max-h-[56%] shrink mb-[3%]" src="/repasadores.webp" alt="Repasadores de Bonté" loading="lazy"/>
-        <div class="absolute w-[2.5%] h-[2.5%] bg-[#373535] right-[2%] top-[2%]"></div>
-        <div class="absolute w-[3.5%] h-[3.5%] bg-[#373535] left-[2%] top-[3%]"></div>
-      </div>
+---
+const { titulo, offset } = Astro.props;
+---
+
+<a href="#"
+  class="background-shadowed relative aspect-square w-full h-full flex flex-col delay-[100ms] md:delay-[200ms] xl:delay-[150ms] duration-[400ms] taos:translate-x-[-200px] md:taos:translate-x-[0px] md:taos:translate-y-[200px] taos:opacity-0"
+  data-taos-offset={offset}
+>
+  <div class="flex flex-col items-center gap-[5%] py-[6%]">
+    <h3 class={titulo}>Repasadores</h3>
+  </div>
+  <img
+    class="w-[92%] max-h-[72%] h-full shrink mb-[3%] object-cover"
+    src="/repasadores.webp"
+    alt="Repasadores de Bonté"
+    loading="lazy"
+  />
+  <div class="absolute w-[2.5%] h-[2.5%] bg-[#373535] right-[2%] top-[2%]">
+  </div>
+  <div class="absolute w-[3.5%] h-[3.5%] bg-[#373535] left-[2%] top-[3%]"></div>
+</a>

@@ -10,12 +10,12 @@ export default {
 	},
 	plugins: [
 	  require('preline/plugin'),
-	  require('taos/plugin'), // Plugin de TAOS agregado
+	  require('taos/plugin'),
 	],
 	safelist: [
 	  '!duration-[0ms]',
 	  '!delay-[0ms]',
-	  'html.js :where([class*="taos:"]:not(.taos-init))', // Safelist de TAOS
+	  'html.js :where([class*="taos:"]:not(.taos-init))',
 	],
   }
   

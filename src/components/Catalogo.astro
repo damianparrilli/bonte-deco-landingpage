@@ -13,37 +13,40 @@ import Repasadores from './components_categoria/Repasadores.astro';
 import Toallas from './components_categoria/Toallas.astro';
 
 const { id } = Astro.props;
+
+const titleCss = "text-lg sm:text-2xl  2xl:text-3xl text-center";
+const offsetT = "100";
 ---
 
 <section id={id} class="overflow-hidden">
   <div class="container [animation-iteration-count:infinite] delay-[100ms] duration-[400ms] taos:translate-y-[200px] taos:opacity-0" data-taos-offset="0">
-    <h2 class="text-3xl sm:text-4xl">Categorías</h2>
+    <h2 class="text-3xl sm:text-4xl">Catálogo de productos</h2>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
+    <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-[14px] gap-y-5 md:gap-x-5 md:gap-y-7">
 
-      <Almohadones />
+      <Almohadones titulo = {titleCss} offset = {offsetT}/>
 
-      <Manteles />
+      <Manteles titulo = {titleCss} offset = {offsetT}/>
 
-      <Repasadores />
+      <Repasadores titulo = {titleCss} offset = {offsetT}/>
 
-      <Servilletas />
+      <Servilletas titulo = {titleCss} offset = {offsetT}/>
 
-      <Toallas />
+      <Toallas titulo = {titleCss} offset = {offsetT}/>
 
-      <Caminos />
+      <Caminos titulo = {titleCss} offset = {offsetT}/>
 
-      <Alfombras />
+      <Alfombras titulo = {titleCss} offset = {offsetT}/>
 
-      <Cortinas />
+      <Cortinas titulo = {titleCss} offset = {offsetT}/>
 
-      <Flores />
+      <Flores titulo = {titleCss} offset = {offsetT}/>
 
-      <PieDeCama />
+      <PieDeCama titulo = {titleCss} offset = {offsetT} />
 
-      <Fundas />
+      <Fundas titulo = {titleCss} offset = {offsetT}/>
 
-      <Pillow />
+      <Pillow titulo = {titleCss} offset = {offsetT}/>
       
     </div>
   </div>
@@ -56,4 +59,12 @@ const { id } = Astro.props;
     -webkit-box-shadow: -15px -12px 99px 0px rgba(0, 0, 0, 0.1) inset;
     -moz-box-shadow: -15px -12px 99px 0px rgba(0, 0, 0, 0.1) inset;
   }
+
+  .background-shadowed:hover {
+    box-shadow: 
+        -15px -12px 99px 0px rgba(0, 0, 0, 0.1) inset,
+        0px 0px 15px rgba(0, 0, 0, 0.3);
+        scale: 1.03;
+    transition: .3s;
+}
 </style>

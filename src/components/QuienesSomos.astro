@@ -2,10 +2,10 @@
 const { id } = Astro.props;
 ---
 
-<section id={id} class="bg-[rgb(180,191,197,0.36)] overflow-hidden">
+<section id={id} class="bg-[rgb(180,191,197,0.36)] overflow-hidden xl:flex xl:items-center xl:min-h-[80dvh]">
   <div class="container otros flex flex-col md:flex-row justify-center items-center w-full h-full gap-10">
-    <div class="w-full h-full sm:w-3/4 sm:h-3/4 aspect-square md:aspect-auto md:w-96 md:h-96 bg-[rgb(82,82,82,0.36)] [animation-iteration-count:infinite] taos:translate-x-[200px] delay-[200ms] duration-[500ms] taos:opacity-0" data-taos-offset="100">
-      <img class="object-cover w-full h-full" src="" alt="Creadoras de Bonté" loading="lazy" />
+    <div class="w-full h-72 sm:w-3/4 sm:h-3/4 aspect-square md:aspect-auto md:w-96 md:h-96 bg-[rgb(82,82,82,0.36)] [animation-iteration-count:infinite] taos:translate-x-[200px] delay-[200ms] duration-[500ms] taos:opacity-0" data-taos-offset="100">
+      <img class="object-cover w-full h-full" src="/quienes-somos.webp" alt="Creadoras de Bonté" loading="lazy" />
     </div>
     <div class="flex flex-col justify-center w-full h-full flex-1 [animation-iteration-count:infinite] taos:translate-x-[200px] delay-[200ms] duration-[500ms] taos:opacity-0" data-taos-offset="100">
       <h2 class="text-3xl sm:text-4xl">¿Quiénes somos?</h2>
