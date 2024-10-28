@@ -2,33 +2,37 @@
 const { id } = Astro.props;
 ---
 
-<section id={id} class="overflow-hidden xl:flex xl:items-center xl:min-h-[80dvh]">
-  <form id="contactoForm" class="container otros flex flex-col gap-5 delay-[200ms] duration-[500ms] taos:translate-y-[-200px] taos:opacity-0 [animation-iteration-count:infinite]" data-taos-offset="300">
+<section
+  id={id}
+  class="overflow-hidden xl:flex xl:items-center xl:min-h-[80dvh]"
+>
+  <form
+    id="contactoForm"
+    class="container otros flex flex-col gap-2"
+    novalidate="true"
+  >
     <h2 class="text-3xl sm:text-4xl">Contacto</h2>
     <div class="flex md:flex-row flex-col gap-4 w-full">
-      <div class="w-full flex flex-col md:gap-x-4">
+      <div class="w-full flex flex-col md:gap-x-3">
         <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" name="nombre" class="w-full" required />
+        <input type="text" id="nombre" name="nombre" class="w-full" />
+        <p class="texto-error" id="texto-error-nombre">*</p>
       </div>
       <div class="w-full flex flex-col">
         <label for="telefono">Teléfono</label>
-        <input
-          type="text"
-          id="telefono"
-          name="telefono"
-          class="w-full"
-          required
-        />
+        <input type="text" id="telefono" name="telefono" class="w-full" />
+        <p class="texto-error" id="texto-error-telefono">*</p>
       </div>
     </div>
     <div class="flex flex-col w-full">
       <label for="email">Email</label>
-      <input type="email" id="email" name="email" required />
+      <input type="email" id="email" name="email" />
+      <p class="texto-error" id="texto-error-email">*</p>
     </div>
     <div class="flex flex-col w-full">
       <label for="mensaje">Mensaje</label>
-      <textarea id="mensaje" name="mensaje" class="min-h-24" required
-      ></textarea>
+      <textarea id="mensaje" name="mensaje" class="min-h-24"></textarea>
+      <p class="texto-error" id="texto-error-mensaje">*</p>
     </div>
     <input
       type="submit"
@@ -56,12 +60,131 @@ const { id } = Astro.props;
   label {
     padding: 5px 0;
   }
+
+  .texto-error {
+    color: red;
+    font-size: 0.8rem;
+    padding: 5px 0;
+    visibility: hidden;
+  }
+
+  .error {
+    border: 2px solid red !important;
+    outline: none;
+  }
 </style>
 
 <script>
-  const contactoForm = document.getElementById("contactoForm");
+  document.addEventListener("DOMContentLoaded", () => {
+    const contactoForm = document.getElementById("contactoForm");
 
-  contactoForm.addEventListener("submit", (e) => {
-    e.preventDefault();
+    const expresiones = {
+      nombres: /^[a-zA-ZÀ-ÿ\s]{1,20}$/,
+      password: /^(?=.*[A-Za-z0-9])[A-Za-z0-9!@#$%^&*()_+]{4,16}$/,
+      correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+      telefono: /^\d{7,14}$/,
+    };
+
+    const nombre = document.getElementById("nombre") as HTMLInputElement;
+    const telefono = document.getElementById("telefono") as HTMLInputElement;
+    const email = document.getElementById("email") as HTMLInputElement;
+    const mensaje = document.getElementById("mensaje") as HTMLInputElement;
+
+    const textoErrorName = document.getElementById("texto-error-nombre");
+    const textoErrorTelefono = document.getElementById("texto-error-telefono");
+    const textoErrorEmail = document.getElementById("texto-error-email");
+    const textoErrorMensaje = document.getElementById("texto-error-mensaje");
+
+    nombre.addEventListener("keyup", () => {
+      textoErrorName.style.visibility = "hidden";
+      nombre.classList.remove("error");
+    });
+
+    telefono.addEventListener("keyup", () => {
+      textoErrorTelefono.style.visibility = "hidden";
+      telefono.classList.remove("error");
+    });
+
+    email.addEventListener("keyup", () => {
+      textoErrorEmail.style.visibility = "hidden";
+      email.classList.remove("error");
+    });
+
+    mensaje.addEventListener("keyup", () => {
+      textoErrorMensaje.style.visibility = "hidden";
+      mensaje.classList.remove("error");
+    });
+
+    contactoForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      let nombreTrue = false;
+      let emailTrue = false;
+      let telefonoTrue = false;
+      let mensajeTrue = false;
+
+      if (nombre.value == "") {
+        textoErrorName.textContent = "*Este campo no puede estar vacío";
+        textoErrorName.style.visibility = "visible";
+        nombre.classList.add("error");
+        nombreTrue = false;
+      } else if (!expresiones.nombres.test(nombre.value)) {
+        textoErrorName.textContent =
+          "*Estas usando caracteres inválidos para este campo";
+        textoErrorName.style.visibility = "visible";
+        nombre.classList.add("error");
+        nombreTrue = false;
+      } else {
+        textoErrorName.style.visibility = "hidden";
+        nombre.classList.remove("error");
+        nombreTrue = true;
+      }
+
+      if (telefono.value == "") {
+        textoErrorTelefono.textContent = "*Este campo no puede estar vacío";
+        textoErrorTelefono.style.visibility = "visible";
+        telefono.classList.add("error");
+        telefonoTrue = false;
+      } else if (!expresiones.telefono.test(telefono.value)) {
+        textoErrorTelefono.textContent = "*El número de teléfono no es válido";
+        textoErrorTelefono.style.visibility = "visible";
+        telefono.classList.add("error");
+        telefonoTrue = false;
+      } else {
+        textoErrorTelefono.style.visibility = "hidden";
+        telefono.classList.remove("error");
+        telefonoTrue = true;
+      }
+
+      if (email.value == "") {
+        textoErrorEmail.textContent = "*Este campo no puede estar vacío";
+        textoErrorEmail.style.visibility = "visible";
+        email.classList.add("error");
+        emailTrue = false;
+      } else if (!expresiones.correo.test(email.value)) {
+        textoErrorEmail.textContent = "*El correo electrónico no es válido";
+        textoErrorEmail.style.visibility = "visible";
+        email.classList.add("error");
+        emailTrue = false;
+      } else {
+        textoErrorEmail.style.visibility = "hidden";
+        email.classList.remove("error");
+        emailTrue = true;
+      }
+
+      if (mensaje.value == "") {
+        textoErrorMensaje.textContent = "*Este campo no puede estar vacío";
+        textoErrorMensaje.style.visibility = "visible";
+        mensaje.classList.add("error");
+        mensajeTrue = false;
+      } else {
+        textoErrorMensaje.style.visibility = "hidden";
+        mensaje.classList.remove("error");
+        mensajeTrue = true;
+      }
+
+      if(nombreTrue && emailTrue && telefonoTrue && mensajeTrue){
+      }
+    });
   });
 </script>
