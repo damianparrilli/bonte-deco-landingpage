@@ -13,7 +13,6 @@ const { id } = Astro.props;
     novalidate="true"
     data-netlify="true"
     netlify-honeypot="bot-field"
-    data-netlify-recaptcha="true"
     method="POST"
   >
     <p class="hidden">
@@ -43,16 +42,6 @@ const { id } = Astro.props;
       <label for="mensaje">Mensaje</label>
       <textarea id="mensaje" name="mensaje" class="min-h-24"></textarea>
       <p class="texto-error" id="texto-error-mensaje">*</p>
-    </div>
-    <div class="w-full flex justify-center items-center">
-      <div class="w-max" id="contenedor-captcha">
-        <div data-netlify-recaptcha="true"></div>
-        <p
-          class="texto-error w-[304px] flex justify-start"
-          id="texto-error-captcha"
-        >
-        </p>
-      </div>
     </div>
 
     <p id="waitingMessage" class="texto-error-envio">
@@ -150,14 +139,6 @@ const { id } = Astro.props;
       resetFieldError(mensaje, textoErrorMensaje)
     );
 
-    // document.addEventListener("click", (e) => {
-    //   const captchaContainer = document.querySelector(".g-recaptcha");
-
-    //   if (captchaContainer) {
-    //     textoErrorCaptcha.style.visibility = "hidden";
-    //   }
-    // });
-
     contactoForm.addEventListener("submit", (e) => {
       e.preventDefault();
 
@@ -165,7 +146,6 @@ const { id } = Astro.props;
       let emailTrue = false;
       let telefonoTrue = false;
       let mensajeTrue = false;
-      let captchaTrue = false;
 
       if (nombre.value == "") {
         textoErrorName.textContent = "*Este campo no puede estar vacío";
@@ -227,24 +207,12 @@ const { id } = Astro.props;
         mensajeTrue = true;
       }
 
-      const captchaResponse = grecaptcha.getResponse();
-
-      if (captchaResponse.length === 0) {
-        textoErrorCaptcha.textContent = "*Tenés que verificar que sos humano";
-        textoErrorCaptcha.style.visibility = "visible";
-        captchaTrue = false;
-      } else {
-        textoErrorCaptcha.style.visibility = "hidden";
-        textoErrorCaptcha.textContent = "";
-        captchaTrue = true;
-      }
 
       if (
         nombreTrue &&
         emailTrue &&
         telefonoTrue &&
-        mensajeTrue &&
-        captchaTrue
+        mensajeTrue
       ) {
 
         if (enviado) {
