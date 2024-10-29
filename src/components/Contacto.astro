@@ -16,13 +16,13 @@ const { id } = Astro.props;
     data-netlify-recaptcha="true"
     method="POST"
   >
-  <p class="hidden">
-    <label>
-      Don’t fill this out if you’re human: <input name="bot-field" />
-    </label>
-  </p>
+    <p class="hidden">
+      <label>
+        Don’t fill this out if you’re human: <input name="bot-field" />
+      </label>
+    </p>
     <h2 class="text-3xl sm:text-4xl">Contacto</h2>
-    <div class="flex md:flex-row flex-col gap-4 w-full">
+    <div class="flex md:flex-row flex-col gap-2 sm:gap-4 w-full">
       <div class="w-full flex flex-col md:gap-x-3">
         <label for="nombre">Nombre</label>
         <input type="text" id="nombre" name="nombre" class="w-full" />
@@ -44,10 +44,23 @@ const { id } = Astro.props;
       <textarea id="mensaje" name="mensaje" class="min-h-24"></textarea>
       <p class="texto-error" id="texto-error-mensaje">*</p>
     </div>
-    <div data-netlify-recaptcha="true" class="w-full flex justify-center items-center"></div>
+    <div class="w-full flex justify-center items-center">
+      <div class="w-max" id="contenedor-captcha">
+        <div data-netlify-recaptcha="true"></div>
+        <p
+          class="texto-error w-[304px] flex justify-start"
+          id="texto-error-captcha"
+        >
+        </p>
+      </div>
+    </div>
+
+    <p id="waitingMessage" class="texto-error-envio">
+    </p>
+
     <input
       type="submit"
-      class="bg-[#547498] hover:bg-[#39608d] transition ease-in-out duration-200 w-full cursor-pointer my-4 px-5 py-3 sm:px-10 sm:py-3 rounded-xl text-base sm:text-lg text-white"
+      class="bg-[#547498] hover:bg-[#39608d] transition ease-in-out duration-200 w-full cursor-pointer px-5 py-3 sm:px-10 sm:py-3 rounded-xl text-base sm:text-lg text-white"
       value="Enviar"
     />
   </form>
@@ -78,6 +91,16 @@ const { id } = Astro.props;
     padding: 5px 0;
     visibility: hidden;
   }
+  .texto-error-envio {
+    color: red;
+    font-size: 1rem;
+    padding: 5px 0;
+    visibility: hidden;
+  }
+
+  .texto-error-envio.enviado {
+    color: green;
+  }
 
   .error {
     border: 2px solid red !important;
@@ -88,6 +111,7 @@ const { id } = Astro.props;
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const contactoForm = document.getElementById("contactoForm");
+    let enviado = false;
 
     const expresiones = {
       nombres: /^[a-zA-ZÀ-ÿ\s]{1,20}$/,
@@ -105,26 +129,34 @@ const { id } = Astro.props;
     const textoErrorTelefono = document.getElementById("texto-error-telefono");
     const textoErrorEmail = document.getElementById("texto-error-email");
     const textoErrorMensaje = document.getElementById("texto-error-mensaje");
+    const textoErrorCaptcha = document.getElementById("texto-error-captcha");
+    const waitingMessage = document.getElementById("waitingMessage");
 
-    nombre.addEventListener("keyup", () => {
-      textoErrorName.style.visibility = "hidden";
-      nombre.classList.remove("error");
-    });
+    const resetFieldError = (field, errorTextElement) => {
+      errorTextElement.style.visibility = "hidden";
+      field.classList.remove("error");
+    };
 
-    telefono.addEventListener("keyup", () => {
-      textoErrorTelefono.style.visibility = "hidden";
-      telefono.classList.remove("error");
-    });
+    nombre.addEventListener("keyup", () =>
+      resetFieldError(nombre, textoErrorName)
+    );
+    telefono.addEventListener("keyup", () =>
+      resetFieldError(telefono, textoErrorTelefono)
+    );
+    email.addEventListener("keyup", () =>
+      resetFieldError(email, textoErrorEmail)
+    );
+    mensaje.addEventListener("keyup", () =>
+      resetFieldError(mensaje, textoErrorMensaje)
+    );
 
-    email.addEventListener("keyup", () => {
-      textoErrorEmail.style.visibility = "hidden";
-      email.classList.remove("error");
-    });
+    // document.addEventListener("click", (e) => {
+    //   const captchaContainer = document.querySelector(".g-recaptcha");
 
-    mensaje.addEventListener("keyup", () => {
-      textoErrorMensaje.style.visibility = "hidden";
-      mensaje.classList.remove("error");
-    });
+    //   if (captchaContainer) {
+    //     textoErrorCaptcha.style.visibility = "hidden";
+    //   }
+    // });
 
     contactoForm.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -133,6 +165,7 @@ const { id } = Astro.props;
       let emailTrue = false;
       let telefonoTrue = false;
       let mensajeTrue = false;
+      let captchaTrue = false;
 
       if (nombre.value == "") {
         textoErrorName.textContent = "*Este campo no puede estar vacío";
@@ -194,7 +227,35 @@ const { id } = Astro.props;
         mensajeTrue = true;
       }
 
-      if (nombreTrue && emailTrue && telefonoTrue && mensajeTrue) {
+      const captchaResponse = grecaptcha.getResponse();
+
+      if (captchaResponse.length === 0) {
+        textoErrorCaptcha.textContent = "*Tenés que verificar que sos humano";
+        textoErrorCaptcha.style.visibility = "visible";
+        captchaTrue = false;
+      } else {
+        textoErrorCaptcha.style.visibility = "hidden";
+        textoErrorCaptcha.textContent = "";
+        captchaTrue = true;
+      }
+
+      if (
+        nombreTrue &&
+        emailTrue &&
+        telefonoTrue &&
+        mensajeTrue &&
+        captchaTrue
+      ) {
+
+        if (enviado) {
+        waitingMessage.innerText = "* Espere para poder enviar otro mensaje";
+        waitingMessage.classList.remove("enviado");
+          return;
+        }
+
+        waitingMessage.innerText = "* ¡Mensaje enviado con éxito!";
+        waitingMessage.classList.add("enviado");
+        waitingMessage.style.visibility = "visible";
         const myForm = e.target as HTMLFormElement;
         const formData = new FormData(myForm);
 
@@ -209,7 +270,14 @@ const { id } = Astro.props;
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: new URLSearchParams(formObject).toString(),
         })
-          .then(() => console.log("Form successfully submitted"))
+          .then(() => {
+            console.log("Form enviado correctamente");
+
+            setTimeout(() => {
+              enviado = false;
+            }, 5000);
+            enviado = true;
+          })
           .catch((error) => alert(error));
       }
     });
