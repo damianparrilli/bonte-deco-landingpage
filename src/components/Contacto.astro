@@ -49,9 +49,36 @@ const { id } = Astro.props;
 
     <input
       type="submit"
-      class="bg-[#547498] hover:bg-[#39608d] transition ease-in-out duration-200 w-full cursor-pointer px-5 py-3 sm:px-10 sm:py-3 rounded-xl text-base sm:text-lg text-white"
+      class="bg-[#547498] hover:bg-[#39608d] transition ease-in-out duration-200 w-full cursor-pointer px-5 py-3 sm:px-10 sm:py-3 rounded-[0.7rem] text-base sm:text-lg text-white"
       value="Enviar"
     />
+
+    <div id="hs-vertically-centered-modal" class="hs-overlay hidden size-full fixed top-0 start-0 z-[1000] overflow-x-hidden overflow-y-auto pointer-events-none" role="dialog" tabindex="-1" aria-labelledby="hs-vertically-centered-modal-label">
+      <div class="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto min-h-[calc(100%-3.5rem)] flex items-center">
+        <div class="w-full flex pb-3 flex-col shadow-sm rounded-xl pointer-events-auto bg-[#f9f9f9]">
+          <div class="flex justify-end items-center py-3 px-4">
+            <button type="button" class="size-8 inline-flex justify-center items-center gap-x-2 rounded-full  bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 disabled:opacity-50 disabled:pointer-events-none " aria-label="Close" data-hs-overlay="#hs-vertically-centered-modal">
+              <span class="sr-only">Close</span>
+              <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 6 6 18"></path>
+                <path d="m6 6 12 12"></path>
+              </svg>
+            </button>
+          </div>
+          <div class="p-4 overflow-y-auto">
+            <p class= "text-center" >
+              Mensaje enviado con éxito. <br> ¡Muchas gracias por contactarte con nosotras!
+            </p>
+          </div>
+          <div class="flex justify-center items-center gap-x-2 py-3 px-4 ">
+            <button type="button" class="bg-[#547498] hover:bg-[#39608d] transition ease-in-out duration-200 cursor-pointer px-8 py-3 rounded-[0.7rem] text-sm text-white disabled:opacity-50 disabled:pointer-events-none" data-hs-overlay="#hs-vertically-centered-modal">
+              Cerrar
+            </button>
+            
+          </div>
+        </div>
+      </div>
+    </div>
   </form>
 </section>
 
@@ -214,15 +241,16 @@ const { id } = Astro.props;
         telefonoTrue &&
         mensajeTrue
       ) {
-
+      
         if (enviado) {
         waitingMessage.innerText = "* Espere para poder enviar otro mensaje";
         waitingMessage.classList.remove("enviado");
           return;
         }
 
-        waitingMessage.innerText = "* ¡Mensaje enviado con éxito!";
-        waitingMessage.classList.add("enviado");
+        const overlayTrigger = document.querySelector('[data-hs-overlay="#hs-vertically-centered-modal"]') as HTMLElement;
+        overlayTrigger?.click();
+        waitingMessage.innerText = "";
         waitingMessage.style.visibility = "visible";
         const myForm = e.target as HTMLFormElement;
         const formData = new FormData(myForm);
@@ -244,6 +272,11 @@ const { id } = Astro.props;
             setTimeout(() => {
               enviado = false;
             }, 5000);
+            
+        nombre.value = "";
+        email.value = "";
+        telefono.value = "";
+        mensaje.value = "";
             enviado = true;
           })
           .catch((error) => alert(error));
