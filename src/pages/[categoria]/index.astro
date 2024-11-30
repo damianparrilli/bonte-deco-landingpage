@@ -1,0 +1,97 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+//Pruebas con API Local
+import productos from "../../../public/productos.json";
+
+export async function getStaticPaths() {
+  const categorias = [
+    ...new Set(productos.map((producto) => producto.categoria)),
+  ];
+
+  return categorias.map((categoria) => ({
+    params: { categoria },
+  }));
+}
+
+const { categoria } = Astro.params;
+const productosCategoria = productos.filter(
+  (producto) => producto.categoria === categoria
+);
+
+//Esto que esta comentado es para cuando se tenga que hacer con una API subida a internet
+ /* export async function getStaticPaths() {
+  const response = await fetch('https://api.sheety.co/21aad7457a5765ba084812ae72c26f5a/bontéDecoBdd/productos');
+  const { productos } = await response.json();
+
+  const categorias = [...new Set(productos.map((producto) => producto.categoria))];
+
+  return categorias.map((categoria) => ({
+    params: { categoria },
+  }));
+}
+
+const { categoria } = Astro.params as { categoria: string };
+
+let productosCategoria = [];
+
+try {
+  const response = await fetch('https://api.sheety.co/21aad7457a5765ba084812ae72c26f5a/bontéDecoBdd/productos');
+  const { productos } = await response.json();
+  productosCategoria = productos.filter((producto) => producto.categoria === categoria);
+} catch (error) {
+  console.error('Error al obtener los datos:', error);
+} */
+
+---
+
+<Layout
+  title={`${productosCategoria[0]?.nombreCategoria || categoria.charAt(0).toUpperCase() + categoria.slice(1)} - Bonté Deco`}	
+  description="Bonté Deco es una empresa dedicada a la venta de productos de decoración de interiores."
+  keywords="bonte, bonté, decoración, decoracion, decoracion de interiores, cortinas, almohadones, pillow, pie de cama"
+>
+  <div class="w-full px-[5%]">
+    <container>
+      <h1 class="titulo-categoria py-8 text-4xl max-sm:text-4xl max-sm:max-w-[400px] max-lg:text-4xl  xl:w-[90%] sm:min-w-[390px] sm:max-w-[390px] lg:min-w-[620px] lg:max-w-[620px]">{productosCategoria[0]?.nombreCategoria || categoria.charAt(0).toUpperCase() + categoria.slice(1)}</h1>
+
+      {
+        productosCategoria.length > 0 ? (
+          <ul class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-[14px] md:gap-7">
+            {productosCategoria.map((producto) => (
+              <li class="group relative h-full flex flex-col">
+                <a href={`/${categoria}/${producto.nombre}`} class="flex flex-col justify-between h-full">
+                  <div class="relative h-full">
+                  <img 
+                    src={producto.imagen1} 
+                    alt={`Imagen de producto ${producto.titulo}`} 
+                    class="transition-opacity duration-300 group-hover:opacity-0"
+                  />
+                  <img 
+                    src={producto.imagen2} 
+                    alt={`Imagen alternativa de producto ${producto.titulo}`} 
+                    class="absolute inset-0 transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+                  />
+                  </div>
+                  <p class="text-sm sm:text-base text-right py-2">{producto.titulo}</p>
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>No se encontraron productos para esta categoría.</p>
+        )
+      }
+    </container>
+  </div>
+</Layout>
+
+<style>
+  img{
+    width: 100%;
+    height: 100%;
+    max-height: 250px;
+    object-fit: cover;
+  }
+
+
+</style>

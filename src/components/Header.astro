@@ -1,8 +1,12 @@
+---
+const isHomePage = new URL(Astro.request.url).pathname === "/";
+---
+
 <header
   id="header"
-  class="flex h-[60px] md:h-[70px] gap-12 px-[5%] justify-center items-center lg:justify-start w-full sticky top-0 bg-[#f9f9f9] z-[100] overflow-hidden transition-opacity duration-500 opacity-0"
+  class={`flex h-[60px] md:h-[70px] gap-12 px-[5%] justify-center items-center lg:justify-start w-full sticky top-0 bg-[#faf9f7] z-[100] overflow-hidden transition-opacity duration-500 ${isHomePage ? 'opacity-0' : 'opacity-100'}`}
 >
-  <a href="#" class="p-2 w-full max-w-24 h-auto colored z-[100]">
+  <a href="/#" class="p-2 w-full max-w-24 h-auto colored z-[100]">
     <img
       id="header-logo"
       src="/logo.svg"
@@ -12,11 +16,11 @@
   </a>
   <nav class="hidden lg:flex items-center">
     <ul class="flex items-center list-none gap-12 desktop-nav">
-      <li><a href="#productos">Productos destacados</a></li>
-      <li><a href="#catalogo">Catálogo de productos</a></li>
-      <li><a href="#quienessomos">Quiénes Somos</a></li>
-      <li><a href="#faq">Preguntas frecuentes</a></li>
-      <li><a href="#contacto">Contacto</a></li>
+      <li><a href="/#productos">Productos destacados</a></li>
+      <li><a href="/#catalogo">Catálogo de productos</a></li>
+      <li><a href="/#quienessomos">Quiénes Somos</a></li>
+      <li><a href="/#faq">Preguntas frecuentes</a></li>
+      <li><a href="/#contacto">Contacto</a></li>
     </ul>
   </nav>
   <!-- Navigation Toggle -->
@@ -48,7 +52,7 @@
   <!-- Sidebar -->
   <div
     id="hs-offcanvas-example"
-    class="hs-overlay z-50 lg:hidden [--auto-close:lg] hs-overlay-open:translate-x-0 translate-x-full transition-all duration-300 transform hidden fixed top-0 end-0 bottom-0 w-full max-w-80 bg-[#f9f9f9] pt-7 pb-10 overflow-y-auto lg:translate-x-0 lg:end-auto lg:bottom-0 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full mt-[60px] md:mt-[70px]"
+    class="hs-overlay z-50 lg:hidden [--auto-close:lg] hs-overlay-open:translate-x-0 translate-x-full transition-all duration-300 transform hidden fixed top-0 end-0 bottom-0 w-full max-w-80 bg-[#faf9f7] pt-7 pb-10 overflow-y-auto lg:translate-x-0 lg:end-auto lg:bottom-0 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full mt-[60px] md:mt-[70px]"
     role="dialog"
     tabindex="-1"
     aria-label="Sidebar"
@@ -56,30 +60,30 @@
     <nav class="hs-accordion-group p-6 w-full flex flex-col flex-wrap">
       <ul class="flex flex-col gap-8">
         <li>
-          <a class="flex items-center gap-x-3.5 py-2 px-2.5" href="#productos">
+          <a class="flex items-center gap-x-3.5 py-2 px-2.5" href="/#productos">
             Productos destacados
           </a>
         </li>
         <li>
-          <a class="flex items-center gap-x-3.5 py-2 px-2.5" href="#catalogo">
+          <a class="flex items-center gap-x-3.5 py-2 px-2.5" href="/#catalogo">
             Catálogo de productos
           </a>
         </li>
         <li>
           <a
             class="flex items-center gap-x-3.5 py-2 px-2.5"
-            href="#quienessomos"
+            href="/#quienessomos"
           >
             Quiénes Somos
           </a>
         </li>
         <li>
-          <a class="flex items-center gap-x-3.5 py-2 px-2.5" href="#faq">
+          <a class="flex items-center gap-x-3.5 py-2 px-2.5" href="/#faq">
             Preguntas frecuentes
           </a>
         </li>
         <li>
-          <a class="flex items-center gap-x-3.5 py-2 px-2.5" href="#contacto">
+          <a class="flex items-center gap-x-3.5 py-2 px-2.5" href="/#contacto">
             Contacto
           </a>
         </li>
@@ -105,23 +109,26 @@
     const header = document.getElementById("header");
     const banner = document.getElementById("banner");
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) {
-          header.classList.add("opacity-100");
-          header.classList.remove("pointer-events-none");
-        } else {
-          header.classList.remove("opacity-100");
-          header.classList.add("pointer-events-none");
+    if (banner) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry.isIntersecting) {
+            header.classList.add("opacity-100");
+            header.classList.remove("pointer-events-none");
+          } else {
+            header.classList.remove("opacity-100");
+            header.classList.add("pointer-events-none");
+          }
+        },
+        {
+          threshold: 0,
         }
-      },
-      {
-        threshold: 0,
-      }
-    );
+      );
 
-    observer.observe(banner);
-
+      observer.observe(banner);
+    } else {
+      header.classList.add("opacity-100");
+    }
     const toggleHamburger = document.getElementById("toggleHamburger");
 
     const abrir = document.getElementById("abrir");

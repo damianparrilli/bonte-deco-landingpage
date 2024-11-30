@@ -1,0 +1,111 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Contacto from "../../../components/Contacto.astro";
+import productos from "../../../../public/productos.json";
+
+export async function getStaticPaths() {
+  const paths = productos.map((producto) => ({
+    params: {
+      categoria: producto.categoria,
+      producto: producto.nombre,
+    },
+  }));
+
+  return paths;
+}
+
+const { categoria, producto } = Astro.params;
+
+const datosProducto = productos.find(
+  (p) => p.categoria === categoria && p.nombre === producto
+);
+---
+
+<Layout
+  title={`${datosProducto?.titulo || "Producto no encontrado"} - Bonté Deco`}
+  description="Bonté Deco es una empresa dedicada a la venta de productos de decoración de interiores."
+  keywords="bonte, bonté, decoración, decoracion, decoracion de interiores, cortinas, almohadones, pillow, pie de cama"
+>
+  {
+    datosProducto ? (
+      <Contacto>
+        <div class="flex flex-col sm:flex-row gap-4 mb-12">
+          <img
+            src={datosProducto.imagen1}
+            alt="Imagen de producto"
+            class="h-auto w-full sm:w-64 object-contain"
+          />
+          <div class="flex flex-col gap-4 sm:gap-2 justify-between">
+            <div>
+              <p>Esta consultando por este producto:</p>
+              <p class="font-bold" id="productoNombre">
+                {datosProducto.titulo}
+              </p>
+            </div>
+
+            <div id="parametros-container" class="flex flex-col gap-4 sm:gap-2">
+              <span id="tipo" />
+              <span id="color" />
+              <span id="tamaño" />
+            </div>
+          </div>
+        </div>
+
+        <div slot="infoForm">
+          <input
+            type="hidden"
+            name="categoria"
+            id="categoriaInput"
+            value={
+              datosProducto[0]?.nombreCategoria ||
+              categoria.charAt(0).toUpperCase() + categoria.slice(1)
+            }
+          />
+          <input
+            type="hidden"
+            name="producto"
+            id="productoInput"
+            value={datosProducto.titulo}
+          />
+          <input type="hidden" name="tipo" id="tipoInput" />
+
+          <input type="hidden" name="color" id="colorInput" />
+          <input type="hidden" name="tamaño" id="tamanoInput" />
+        </div>
+      </Contacto>
+    ) : (
+      <p>Producto no encontrado</p>
+    )
+  }
+</Layout>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const urlParams = new URLSearchParams(window.location.search);
+
+    document.getElementById("tipo").innerHTML =
+      `<b>Tipo:</b> ${urlParams.get("tipo")}` || "";
+    document.getElementById("color").innerHTML =
+      `<b>Color:</b> ${urlParams.get("color")}` || "";
+    document.getElementById("tamaño").innerHTML =
+      `<b>Tamaño:</b> ${urlParams.get("tamaño")}` || "";
+
+    const categoriaInput = document.getElementById(
+      "categoriaInput"
+    ) as HTMLInputElement;
+    const productoInput = document.getElementById(
+      "productoInput"
+    ) as HTMLInputElement;
+    const tipoInput = document.getElementById("tipoInput") as HTMLInputElement;
+    const colorInput = document.getElementById(
+      "colorInput"
+    ) as HTMLInputElement;
+    const tamanoInput = document.getElementById(
+      "tamanoInput"
+    ) as HTMLInputElement;
+
+    tipoInput.value = urlParams.get("tipo") || "";
+    colorInput.value = urlParams.get("color") || "";
+    tamanoInput.value = urlParams.get("tamaño") || "";
+  });
+</script>

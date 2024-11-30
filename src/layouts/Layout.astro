@@ -1,6 +1,7 @@
 ---
 import Header from "../components/Header.astro";
 import Banner from "../components/Banner.astro";
+import Footer from '../components/Footer.astro';
 interface Props {
   title: string;
   description: string;
@@ -65,10 +66,11 @@ const isHomePage = new URL(Astro.request.url).pathname === "/";
       document.documentElement.classList.add("js");
     </script>
   </head>
-  <body class="bg-[#f9f9f9] overflow-auto">
+  <body>
     {isHomePage && <Banner />}
     <Header />
     <slot />
+    <Footer />
     <script src="https://unpkg.com/taos@1.0.5/dist/taos.js" is:inline></script>
     <script src="/scripts/preline.js" defer async is:inline></script>
   </body>
@@ -89,6 +91,11 @@ const isHomePage = new URL(Astro.request.url).pathname === "/";
     scrollbar-gutter: stable;
     font-family: "Plus Jakarta Sans", sans-serif;
     text-wrap: pretty;
+  }
+
+  body{
+   background-color:#faf9f7; 
+    overflow: auto;
   }
 
   section {
@@ -117,6 +124,10 @@ const isHomePage = new URL(Astro.request.url).pathname === "/";
 
   h1{
     -webkit-text-stroke: 0.5px #f9f9f9;
+  }
+
+  .titulo-categoria{
+    -webkit-text-stroke: 0.5px #3c2c0b;
   }
   h2 {
     -webkit-text-stroke: 0.5px #3c2c0b;

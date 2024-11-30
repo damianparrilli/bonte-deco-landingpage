@@ -1,9 +1,9 @@
 ---
-const { titulo, offset } = Astro.props;
+const { titulo, offset, redirect } = Astro.props;
 const defaultTitulo = "text-center";
 ---
 
-<a href="#" class="background-shadowed relative aspect-square w-full h-full delay-[150ms] md:delay-[200ms] xl:delay-[125ms] duration-[400ms] taos:translate-x-[200px] md:taos:translate-x-[0px] md:taos:translate-y-[200px] taos:opacity-0" data-taos-offset={offset}>
+<a href={redirect} class="background-shadowed relative aspect-square w-full h-full delay-[150ms] md:delay-[200ms] xl:delay-[125ms] duration-[400ms] taos:translate-x-[200px] md:taos:translate-x-[0px] md:taos:translate-y-[200px] taos:opacity-0" data-taos-offset={offset}>
   <div class="relative h-full w-full bg-clip-content p-[3%] bg-cover bg-[url('/caminos.webp')] flex justify-center items-end">
     <div class="min-w-[70%] h-max flex items-center justify-center bg-[#D9DAD3] mb-[5%] gap-2 p-[3%]">
       <h3 class={`${titulo} ${defaultTitulo}`}>Caminos</h3>

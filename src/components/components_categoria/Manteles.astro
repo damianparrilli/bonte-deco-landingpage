@@ -1,9 +1,9 @@
 ---
-const { titulo, offset } = Astro.props;
+const { titulo, offset, redirect } = Astro.props;
 const defaultTitulo = "w-[65%] text-center bg-[#D9DAD3] px-[10%] py-[3%] -mt-[5%] mb-[2%]";
 ---
 
-<a href="#"
+<a href={redirect}
   class="background-shadowed md:overflow-hidden justify-stretch relative aspect-square w-full h-full flex flex-col p-[3%] items-center delay-[150ms] xl:delay-[125ms] duration-[400ms] taos:translate-x-[200px] md:taos:translate-x-[0px] md:taos:taos:translate-y-[200px] taos:opacity-0"
   data-taos-offset={offset}
 >

@@ -1,9 +1,9 @@
 ---
-const { titulo, offset } = Astro.props;
+const { titulo, offset, redirect } = Astro.props;
 const defaultTitulo = "absolute top-[6%]";
 ---
 
-<a href="#" class="background-shadowed relative aspect-square w-full h-full pl-[8%] pr-[3%] py-[5%] flex items-end overflow-hidden delay-[100ms] md:delay-[200ms] xl:delay-[100ms] duration-[400ms] taos:translate-x-[-200px] md:taos:translate-x-[0px] md:taos:translate-y-[200px] taos:opacity-0" data-taos-offset={offset}>
+<a href={redirect} class="background-shadowed relative aspect-square w-full h-full pl-[8%] pr-[3%] py-[5%] flex items-end overflow-hidden delay-[100ms] md:delay-[200ms] xl:delay-[100ms] duration-[400ms] taos:translate-x-[-200px] md:taos:translate-x-[0px] md:taos:translate-y-[200px] taos:opacity-0" data-taos-offset={offset}>
     <h3 class={`${titulo} ${defaultTitulo}`}>Flores</h3>
     <div class="relative flex w-full h-[85%]">
       <img

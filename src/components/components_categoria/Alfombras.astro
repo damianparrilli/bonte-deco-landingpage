@@ -1,8 +1,8 @@
 ---
-const { titulo, offset } = Astro.props;
+const { titulo, offset, redirect } = Astro.props;
 ---
 
-<a href="#" class="background-shadowed relative aspect-square w-full h-full flex gap-2 lg:gap-4 justify-between p-[5%] items-center delay-[100ms] xl:delay-[150ms] duration-[400ms] taos:translate-x-[-200px] md:taos:translate-x-[0px] md:taos:translate-y-[200px] taos:opacity-0" data-taos-offset={offset}>
+<a href={redirect} class="background-shadowed relative aspect-square w-full h-full flex gap-2 lg:gap-4 justify-between p-[5%] items-center delay-[100ms] xl:delay-[150ms] duration-[400ms] taos:translate-x-[-200px] md:taos:translate-x-[0px] md:taos:translate-y-[200px] taos:opacity-0" data-taos-offset={offset}>
   <div class="flex w-max flex-1 h-full pt-[10%]">
     <h3 class={titulo}>Alfombras</h3>
   </div>

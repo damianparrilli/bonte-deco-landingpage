@@ -1,9 +1,9 @@
 ---
-const { titulo, offset } = Astro.props;
+const { titulo, offset, redirect } = Astro.props;
 const defaultTitulo = "w-full";
 ---
 
-<a href="#" class="background-shadowed relative aspect-square w-full h-full flex p-[3%]  delay-[100ms] md:delay-[150ms] xl:delay-[100ms] duration-[400ms] taos:translate-x-[-200px] md:taos:translate-x-[0px] md:taos:translate-y-[200px] taos:opacity-0" data-taos-offset={offset}>
+<a href={redirect} class="background-shadowed relative aspect-square w-full h-full flex p-[3%]  delay-[100ms] md:delay-[150ms] xl:delay-[100ms] duration-[400ms] taos:translate-x-[-200px] md:taos:translate-x-[0px] md:taos:translate-y-[200px] taos:opacity-0" data-taos-offset={offset}>
   <img
     src="/toallas.webp"
     alt="Toallas de Bonté"
