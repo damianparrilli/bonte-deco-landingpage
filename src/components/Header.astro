@@ -4,9 +4,13 @@ const isHomePage = new URL(Astro.request.url).pathname === "/";
 
 <header
   id="header"
-  class={`flex h-[60px] md:h-[70px] gap-12 px-[5%] justify-center items-center lg:justify-start w-full sticky top-0 bg-[#faf9f7] z-[100] overflow-hidden transition-opacity duration-500 ${isHomePage ? 'opacity-0' : 'opacity-100'}`}
+  class={`flex h-[60px] md:h-[70px] gap-12 px-[5%] justify-center items-center lg:justify-start w-full sticky top-0 bg-[#faf9f7] z-[100] overflow-hidden transition-opacity duration-500 ${isHomePage ? "opacity-0" : "opacity-100"}`}
 >
-  <a href="/#" class="p-2 w-full max-w-24 h-auto colored z-[100]">
+  <a
+    href="/#"
+    id="header-anchor"
+    class="p-2 w-full max-w-24 h-auto colored z-[100]"
+  >
     <img
       id="header-logo"
       src="/logo.svg"
@@ -147,6 +151,17 @@ const isHomePage = new URL(Astro.request.url).pathname === "/";
       if (overlay && event.target === overlay) {
         abrir.classList.toggle("hidden");
         cerrar.classList.toggle("hidden");
+        overlay.remove();
+      }
+
+      const target = event.target as HTMLElement;
+      const headerAnchor = target.closest("a");
+      if (headerAnchor && headerAnchor.id === "header-anchor") {
+        overlay.click();
+      }
+
+      if(cerrar && event.target === cerrar){
+        overlay.remove();
       }
 
       anchors.forEach((anchor) => {

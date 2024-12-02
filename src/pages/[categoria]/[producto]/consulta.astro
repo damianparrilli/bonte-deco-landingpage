@@ -28,7 +28,8 @@ const datosProducto = productos.find(
 >
   {
     datosProducto ? (
-      <Contacto>
+      <Contacto
+      consulta="pt-4 pb-12">
         <div class="flex flex-col sm:flex-row gap-4 mb-12">
           <img
             src={datosProducto.imagen1}
@@ -83,19 +84,19 @@ const datosProducto = productos.find(
   document.addEventListener("DOMContentLoaded", () => {
     const urlParams = new URLSearchParams(window.location.search);
 
-    document.getElementById("tipo").innerHTML =
-      `<b>Tipo:</b> ${urlParams.get("tipo")}` || "";
-    document.getElementById("color").innerHTML =
-      `<b>Color:</b> ${urlParams.get("color")}` || "";
-    document.getElementById("tamaño").innerHTML =
-      `<b>Tamaño:</b> ${urlParams.get("tamaño")}` || "";
+    if(urlParams.get("tipo") !== null){
+      document.getElementById("tipo").innerHTML =
+        `<b>Tipo:</b> ${urlParams.get("tipo")}` || "";
+    }
+    if(urlParams.get("color") !== null){
+      document.getElementById("color").innerHTML =
+        `<b>Color:</b> ${urlParams.get("color")}` || "";
+    }
+    if(urlParams.get("tamaño") !== null){
+      document.getElementById("tamaño").innerHTML =
+        `<b>Tamaño:</b> ${urlParams.get("tamaño")}` || "";
+    }
 
-    const categoriaInput = document.getElementById(
-      "categoriaInput"
-    ) as HTMLInputElement;
-    const productoInput = document.getElementById(
-      "productoInput"
-    ) as HTMLInputElement;
     const tipoInput = document.getElementById("tipoInput") as HTMLInputElement;
     const colorInput = document.getElementById(
       "colorInput"
