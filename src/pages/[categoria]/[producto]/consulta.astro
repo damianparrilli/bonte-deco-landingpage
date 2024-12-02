@@ -48,6 +48,7 @@ const datosProducto = productos.find(
               <span id="tipo" />
               <span id="color" />
               <span id="tamaño" />
+              <span id="diseño" />
             </div>
           </div>
         </div>
@@ -72,6 +73,7 @@ const datosProducto = productos.find(
 
           <input type="hidden" name="color" id="colorInput" />
           <input type="hidden" name="tamaño" id="tamanoInput" />
+          <input type="hidden" name="diseño" id="disenoInput" />
         </div>
       </Contacto>
     ) : (
@@ -96,6 +98,10 @@ const datosProducto = productos.find(
       document.getElementById("tamaño").innerHTML =
         `<b>Tamaño:</b> ${urlParams.get("tamaño")}` || "";
     }
+    if(urlParams.get("diseño") !== null){
+      document.getElementById("diseño").innerHTML =
+        `<b>Diseño:</b> ${urlParams.get("diseño")}` || "";
+    }
 
     const tipoInput = document.getElementById("tipoInput") as HTMLInputElement;
     const colorInput = document.getElementById(
@@ -105,8 +111,13 @@ const datosProducto = productos.find(
       "tamanoInput"
     ) as HTMLInputElement;
 
+    const disenoInput = document.getElementById(
+      "disenoInput"
+    ) as HTMLInputElement;
+
     tipoInput.value = urlParams.get("tipo") || "";
     colorInput.value = urlParams.get("color") || "";
     tamanoInput.value = urlParams.get("tamaño") || "";
+    disenoInput.value = urlParams.get("diseño") || "";
   });
 </script>

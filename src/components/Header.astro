@@ -21,7 +21,51 @@ const isHomePage = new URL(Astro.request.url).pathname === "/";
   <nav class="hidden lg:flex items-center">
     <ul class="flex items-center list-none gap-12 desktop-nav">
       <li><a href="/#productos">Productos destacados</a></li>
-      <li><a href="/#catalogo">Catálogo de productos</a></li>
+      <li class="hs-dropdown [--strategy:static] sm:[--strategy:fixed] [--adaptive:none] [--trigger:hover] boton-dropdown">
+        <button id="hs-navbar-example-dropdown" type="button" class="hs-dropdown-toggle flex items-center w-full" aria-haspopup="menu" aria-expanded="false" aria-label="Mega Menu">
+          Catálogo de productos
+          <svg class="hs-dropdown-open:-rotate-180 sm:hs-dropdown-open:rotate-0 duration-300 ms-1 shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+
+        <div id="contenido-dropdown" class="hs-dropdown-menu transition-[opacity,margin] ease-in-out duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 w-max gap-x-6 gap-y-4 z-10  sm:shadow-md rounded-lg p-4 space-y-1 before:absolute top-full sm:border before:-top-5 before:start-0 before:w-full before:h-5 hidden bg-[#faf9f7]" role="menu" aria-orientation="vertical" aria-labelledby="hs-navbar-example-dropdown">
+          <a href="/almohadones" class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm focus:outline-none " href="#">
+            Almohadones
+          </a>
+          <a href="/manteles" class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm" href="#">
+            Manteles
+          </a>
+          <a href="/repasadores" class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm" href="#">
+            Repasadores
+          </a>
+          <a href="/servilletas" class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm focus:outline-none " href="#">
+            Servilletas
+          </a>
+          <a href="/toallas" class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm" href="#">
+            Toallas
+          </a>
+          <a href="/caminos" class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm" href="#">
+            Caminos
+          </a>
+          <a href="/alfombras" class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm focus:outline-none " href="#">
+            Alfombras
+          </a>
+          <a href="/cortinas" class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm" href="#">
+            Cortinas de baño
+          </a>
+          <a href="/flores" class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm" href="#">
+            Flores
+          </a>
+          <a href="/piedecama" class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm focus:outline-none " href="#">
+            Pies de cama
+          </a>
+          <a href="/fundas" class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm" href="#">
+            Fundas de Edredón
+          </a>
+          <a href="/pillow" class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm" href="#">
+            Pillow
+          </a>
+        </div>
+      </li>
       <li><a href="/#quienessomos">Quiénes Somos</a></li>
       <li><a href="/#faq">Preguntas frecuentes</a></li>
       <li><a href="/#contacto">Contacto</a></li>
@@ -68,10 +112,78 @@ const isHomePage = new URL(Astro.request.url).pathname === "/";
             Productos destacados
           </a>
         </li>
-        <li>
-          <a class="flex items-center gap-x-3.5 py-2 px-2.5" href="/#catalogo">
+        <li class="hs-accordion" id="catalogo-accordion">
+          <button type="button" class="hs-accordion-toggle hs-accordion-active:hover:bg-transparent w-full text-start flex items-center gap-x-3.5 py-2 px-2.5" aria-expanded="true" aria-controls="users-accordion">
             Catálogo de productos
-          </a>
+            <svg class="hs-accordion-active:block ms-auto hidden size-6" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+
+            <svg class="hs-accordion-active:hidden ms-auto block size-6" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+
+          <div id="account-accordion" class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden" role="region" aria-labelledby="account-accordion">
+            <ul class="pt-4 ps-2 flex flex-col gap-y-4">
+              <li>
+                <a href="/almohadones" class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm" href="#">
+                  Almohadones
+                </a>
+              </li>
+              <li>
+                <a href="/manteles" class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm" href="#">
+                  Manteles
+                </a>
+              </li>
+              <li>
+                <a href="/repasadores" class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm" href="#">
+                  Repasadores
+                </a>
+              </li>
+              <li>
+                <a href="/servilletas" class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm" href="#">
+                  Servilletas
+                </a>
+              </li>
+              <li>
+                <a href="/toallas" class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm" href="#">
+                  Toallas
+                </a>
+              </li>
+              <li>
+                <a href="/caminos" class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm" href="#">
+                  Caminos
+                </a>
+              </li>
+              <li>
+                <a href="/alfombras" class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm" href="#">
+                  Alfombras
+                </a>
+              </li>
+              <li>
+                <a href="/cortinas" class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm" href="#">
+                  Cortinas de baño
+                </a>
+              </li>
+              <li>
+                <a href="/flores" class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm" href="#">
+                  Flores
+                </a>
+              </li>
+              <li>
+                <a href="/piedecama" class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm" href="#">
+                  Pies de cama
+                </a>
+              </li>
+              <li>
+                <a href="/fundas" class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm" href="#">
+                  Fundas de Edredón
+                </a>
+              </li>
+              <li>
+                <a href="/pillow" class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm" href="#">
+                  Pillow
+                </a>
+              </li>
+            </ul>
+          </div>
         </li>
         <li>
           <a
@@ -105,6 +217,22 @@ const isHomePage = new URL(Astro.request.url).pathname === "/";
 
   .desktop-nav li a:hover {
     color: #5f4d27;
+  }
+
+  #contenido-dropdown.block{
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr);
+
+  }
+
+  .boton-dropdown{
+    cursor: pointer;
+  }
+  .boton-dropdown:hover button{
+    color: #5f4d27;
+  }
+
+  .boton-dropdown button svg{
   }
 </style>
 
@@ -163,6 +291,15 @@ const isHomePage = new URL(Astro.request.url).pathname === "/";
       if(cerrar && event.target === cerrar){
         overlay.remove();
       }
+
+      const dropdown = document.querySelector(".boton-dropdown");
+
+      if(banner){
+        dropdown.addEventListener("click", () => {
+          window.location.href = "#catalogo";
+        });
+      }
+
 
       anchors.forEach((anchor) => {
         anchor.addEventListener("click", () => {
