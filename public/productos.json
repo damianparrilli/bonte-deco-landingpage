@@ -18,6 +18,24 @@
     "descripcion2": ""
   },
   {
+    "categoria": "repasadores",
+    "nombreCategoria": "",
+    "nombre": "repasador-wafle",
+    "titulo": "Repasador Wafle",
+    "tipo": "",
+    "color": "",
+    "tamaño": "",
+    "diseño": "",
+    "tela": "Wafle",
+    "imagen1": "https://i.ibb.co/qgrkhsf/Falta-subir-a-web-2.webp",
+    "imagen2": "https://i.ibb.co/xhH8DcB/REPASADORES-NIDO-1.webp",
+    "imagen3": "",
+    "imagen4": "",
+    "imagen5": "",
+    "descripcion": "",
+    "descripcion2": ""
+  },
+  {
     "categoria": "almohadones",
     "nombreCategoria": "",
     "nombre": "linea-tusor-combinado",
@@ -271,10 +289,10 @@
   },
   {
     "categoria": "fundas",
-    "nombreCategoria": "Fundas de Edredñn",
+    "nombreCategoria": "Fundas de Edredón",
     "nombre": "funda-edredon-terra",
-    "titulo": "Funda Edredñn Terra",
-    "tipo": "Funda de edredñn",
+    "titulo": "Funda Edredón Terra",
+    "tipo": "Funda de edredón",
     "color": "Descrude",
     "tamaño": "240 x 270 cm",
     "diseño": "",
