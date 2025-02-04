@@ -1,0 +1,25 @@
+---
+const { titulo, offset, redirect } = Astro.props;
+const defaultTitulo = "absolute px-2 min-[480px]:px-5 top-[6%]";
+---
+
+<a href={redirect}
+  class="background-shadowed relative aspect-square w-full h-full flex flex-col justify-end overflow-hidden delay-[100ms] duration-[400ms] taos:translate-x-[-200px] md:taos:translate-x-[0px] md:taos:translate-y-[200px] taos:opacity-0"
+  data-taos-offset={offset}
+>
+  <h3 class={`${titulo} ${defaultTitulo}`}>Acolchados</h3>
+  <div class="relative flex justify-end w-full h-[78%]">
+    <div class="relative w-[86%] h-full">
+      <img
+        class="w-full h-full object-cover"
+        src="/acolchados.webp"
+        loading="lazy"
+        alt="acolchados de Bonté"
+      />
+
+      <div class="absolute w-[6%] h-[10%] bg-[#373535] bottom-0 -left-[6%]">
+      </div>
+    </div>
+  </div>
+  <div class="absolute w-[10%] h-[4%] bg-[#373535] right-0 top-[2%]"></div>
+</a>

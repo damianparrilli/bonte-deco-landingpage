@@ -72,6 +72,24 @@
     "descripcion2": ""
   },
   {
+    "categoria": "alfombras",
+    "nombreCategoria": "",
+    "nombre": "alfombra-iris",
+    "titulo": "Alfombra Iris",
+    "tipo": "",
+    "color": "",
+    "tamaño": "100 cm diametro",
+    "diseño": "",
+    "tela": "Artesanal",
+    "imagen1": "https://dcdn.mitiendanube.com/stores/003/127/779/products/alfombra-iris1-1cb89655d71d94d6e716891967289607-1024-1024.webp",
+    "imagen2": "https://dcdn.mitiendanube.com/stores/003/127/779/products/alfombrs-iris1-bdb0f56312a3e1533b16891967291058-1024-1024.webp",
+    "imagen3": "https://dcdn.mitiendanube.com/stores/003/127/779/products/alfombra-iris1-1cb89655d71d94d6e716891967290524-1024-1024.webp",
+    "imagen4": "",
+    "imagen5": "",
+    "descripcion": "",
+    "descripcion2": ""
+  },
+  {
     "categoria": "cortinas",
     "nombreCategoria": "Cortinas de baño",
     "nombre": "cortina-de-baño-tusor-y-gasa",
@@ -90,7 +108,7 @@
     "descripcion2": ""
   },
   {
-    "categoria": "cover",
+    "categoria": "covers",
     "nombreCategoria": "",
     "nombre": "cover-gaby",
     "titulo": "Cover Gaby",
@@ -108,7 +126,7 @@
     "descripcion2": ""
   },
   {
-    "categoria": "cover",
+    "categoria": "covers",
     "nombreCategoria": "",
     "nombre": "cover-wafle",
     "titulo": "Cover Wafle",
@@ -126,7 +144,7 @@
     "descripcion2": ""
   },
   {
-    "categoria": "delantal",
+    "categoria": "delantales",
     "nombreCategoria": "",
     "nombre": "delantal",
     "titulo": "Delantal",
@@ -236,8 +254,8 @@
   {
     "categoria": "cortinas",
     "nombreCategoria": "Cortinas de baño",
-    "nombre": "cortina-de-baño-marilu",
-    "titulo": "Cortina de baño Marilu",
+    "nombre": "cortina-de-baño-tusor-marilu",
+    "titulo": "Cortina de baño Tusor Marilu",
     "tipo": "",
     "color": "Rosa viejo",
     "tamaño": "2.40 x 2 mts",
@@ -319,6 +337,42 @@
     "imagen2": "https://i.ibb.co/Ndyw8fJj/20250130-171655.webp",
     "imagen3": "https://i.ibb.co/m5q1zm8J/20250130-171857.webp",
     "imagen4": "https://i.ibb.co/p6mxc5jb/20250130-171904.webp",
+    "imagen5": "",
+    "descripcion": "",
+    "descripcion2": ""
+  },
+  {
+    "categoria": "almohadones",
+    "nombreCategoria": "",
+    "nombre": "linea-lisse",
+    "titulo": "Linea Lisse",
+    "tipo": "Almohadón completo, Fundas",
+    "color": "Humo, Gris Soft, Caramel, Natural, Arena, Cemento, Piedra",
+    "tamaño": "50 x 50 cm, 60 x 60 cm, 40 x 80cm, 35 x 60cm",
+    "diseño": "",
+    "tela": "Tusor",
+    "imagen1": "https://dcdn.mitiendanube.com/stores/003/127/779/products/lisse-premium-7-40095739b2374a7abb17069046214892-1024-1024.webp",
+    "imagen2": "https://dcdn.mitiendanube.com/stores/003/127/779/products/lisse-premium-8-590dfa78ae83ca739817069046230365-1024-1024.webp",
+    "imagen3": "https://dcdn.mitiendanube.com/stores/003/127/779/products/lisse-premium-6-27bc7a463f0598634a17069046211680-1024-1024.webp",
+    "imagen4": "https://dcdn.mitiendanube.com/stores/003/127/779/products/lisse-premium-9-07eb1cba8354500b9217069046227672-1024-1024.webp",
+    "imagen5": "https://dcdn.mitiendanube.com/stores/003/127/779/products/lisse-premium-2e2b13af7d4dab465c17069046224631-1024-1024.webp",
+    "descripcion": "",
+    "descripcion2": ""
+  },
+  {
+    "categoria": "almohadones",
+    "nombreCategoria": "",
+    "nombre": "linea-cleo",
+    "titulo": "Linea Cleo",
+    "tipo": "Almohadón completo, Fundas",
+    "color": "Gris Soft",
+    "tamaño": "60 x 60 cm",
+    "diseño": "",
+    "tela": "Gasa Doble",
+    "imagen1": "https://dcdn.mitiendanube.com/stores/003/127/779/products/whatsapp-image-2024-01-24-at-7-56-00-am-e48388dbc7fc69cdac17069046990020-1024-1024.webp",
+    "imagen2": "https://dcdn.mitiendanube.com/stores/003/127/779/products/almohadon-y-manta-cleo-premium-33a9e76bd869b072fe17069046990789-1024-1024.webp",
+    "imagen3": "https://dcdn.mitiendanube.com/stores/003/127/779/products/copia-de-almoh-y-manta-cleo-prem-0e7e294991df7b6f1b17069046989771-1024-1024.webp",
+    "imagen4": "",
     "imagen5": "",
     "descripcion": "",
     "descripcion2": ""

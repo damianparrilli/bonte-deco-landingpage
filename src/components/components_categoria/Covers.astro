@@ -1,0 +1,21 @@
+---
+const { titulo, offset, redirect } = Astro.props;
+---
+
+<a href={redirect}
+  class="background-shadowed relative aspect-square w-full h-full flex flex-col delay-[100ms] md:delay-[200ms] xl:delay-[150ms] duration-[400ms] taos:translate-x-[-200px] md:taos:translate-x-[0px] md:taos:translate-y-[200px] taos:opacity-0"
+  data-taos-offset={offset}
+>
+  <div class="flex flex-col items-center gap-[5%] py-[6%]">
+    <h3 class={titulo}>Covers</h3>
+  </div>
+  <img
+    class="w-[92%] max-h-[72%] h-full shrink mb-[3%] object-cover"
+    src="/covers.webp"
+    alt="Covers de Bonté"
+    loading="lazy"
+  />
+  <div class="absolute w-[2.5%] h-[2.5%] bg-[#373535] right-[2%] top-[2%]">
+  </div>
+  <div class="absolute w-[3.5%] h-[3.5%] bg-[#373535] left-[2%] top-[3%]"></div>
+</a>

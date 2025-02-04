@@ -11,6 +11,10 @@ import Pillow from './components_categoria/Pillow.astro';
 import Servilletas from './components_categoria/Servilletas.astro';
 import Repasadores from './components_categoria/Repasadores.astro';
 import Toallas from './components_categoria/Toallas.astro';
+import Acolchados from './components_categoria/Acolchados.astro';
+import Covers from './components_categoria/Covers.astro';
+import Delantales from './components_categoria/Delantales.astro';
+import Organizadores from './components_categoria/Organizadores.astro';
 
 const { id } = Astro.props;
 
@@ -47,6 +51,14 @@ const offsetT = "100";
       <Fundas titulo = {titleCss} offset = {offsetT} redirect = "/fundas"/>
 
       <Pillow titulo = {titleCss} offset = {offsetT} redirect = "/pillow"/>
+
+      <Acolchados titulo = {titleCss} offset = {offsetT} redirect = "/acolchados"/>
+
+      <Delantales titulo = {titleCss} offset = {offsetT} redirect = "/delantales"/>
+
+      <Covers titulo = {titleCss} offset = {offsetT} redirect = "/covers"/>
+
+      <Organizadores titulo = {titleCss} offset = {offsetT} redirect = "/organizadores"/>
       
     </div>
   </div>
